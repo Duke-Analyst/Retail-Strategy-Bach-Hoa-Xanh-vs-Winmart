@@ -12,19 +12,22 @@ Dự án này nhằm phân tích và so sánh chiến lược hàng hoá và chi
 ![image](https://github.com/user-attachments/assets/49ec25a3-d878-4c60-be48-0e0f1aeced1d)
 
 - Winmart: gồm 2 file tại ngày 01-12-2022 (đầu tháng) và 15-12-2022 (giữa tháng), chứa dữ liệu về giá, tên sản phẩm, đơn vị sản phẩm,...
-- ![image](https://github.com/user-attachments/assets/e9eb7041-68e4-46f8-b88a-ea33eceb8b69)
+ ![image](https://github.com/user-attachments/assets/e9eb7041-68e4-46f8-b88a-ea33eceb8b69)
 
 #  Phần 1: Xử lý dữ liệu
-Mục tiêu của phần này là phân nhóm sản phẩm theo công năng và đặc tính sản phẩm dựa trên Tên sản phẩm, xử lý dữ liệu duplicated, làm sạch dữ liệu để phân tích
-## xử lý cột dư
-File đầu tháng
+Mục tiêu của phần này là phân nhóm sản phẩm theo công năng và đặc tính sản phẩm dựa trên tên sản phẩm, xử lý dữ liệu duplicated, làm sạch dữ liệu để phân tích
+## Xử lý cột dư
+File đầu tháng:
+
 ![image](https://github.com/user-attachments/assets/4cbafbd8-58de-4964-8ee2-39713e3aeb56)
 
+---
 File giữa tháng: Rename cho tên cột của cả 2 file giống nhau để gộp file
 ![image](https://github.com/user-attachments/assets/bb3c7df1-ae14-4898-ab45-0563ef90fab1)
 
 ## Gộp file và xử lý duplicated 
 Chỉ xoá hàng bị duplicated ở cả 3 cột tên sản phẩm và giá, Sku (Điều này sẽ giữ lại các sản phẩm bị thay đổi về giá tại 2 thời điểm đầu tháng và cuối tháng)
+
 ![image](https://github.com/user-attachments/assets/bd479835-0ac5-4b46-a36c-181f9079f082)
 
 ## Phân loại sản phẩm 
@@ -41,6 +44,7 @@ Ghép các từ lại thành tên thương hiệu: Các từ đã lọc được
 
 - B1: Trích xuất trọng lượng hoặc thể tích: 
 ![image](https://github.com/user-attachments/assets/ea1fe8be-5b6d-40a0-ae69-115af6c285c3)
+
 Tìm kiếm các từ như 'g', 'kg', 'lít', 'ml', 'L' để lấy thông tin về trọng lượng hoặc thể tích (ví dụ: '75g', '3.4 lít')
 
 - B2: Phân loại sản phẩm chính (category): Kiểm tra tên sản phẩm và tạo dictionary để xác định loại sản phẩm chính (ví dụ: "Cà phê", "Chăm sóc cá nhân", "Bia, nước giải khát")
@@ -54,10 +58,13 @@ Sử dụng regex để tìm kiếm thông tin bao bì sản phẩm (ví dụ: '
  ![image](https://github.com/user-attachments/assets/763beeb8-b983-4e06-864b-de43b3023846)
 
 
-B5: Dọn dẹp thông tin còn lại: Sau khi loại bỏ trọng lượng và bao bì, phần còn lại của tên sản phẩm sẽ được coi là miêu tả đặc tính sản phẩm.
-![image](https://github.com/user-attachments/assets/03eb91a6-7eeb-4297-8597-e43a5b48c0ce)
-Trả về kết quả: Hàm trả về các thông tin phân loại sản phẩm (Danh mục, Loại, Miêu tả, Đóng gói, Khối lượng).
+- B5: Dọn dẹp thông tin còn lại:
+  
+Sau khi loại bỏ trọng lượng và bao bì, phần còn lại của tên sản phẩm sẽ được coi là miêu tả đặc tính sản phẩm.
 
-B6: Tối ưu các trường hợp hàm không thể nhận diện được category do lỗi font tiếng Việt
+Trả về kết quả: Hàm trả về các thông tin phân loại sản phẩm (Danh mục, Loại, Miêu tả, Đóng gói, Khối lượng).
+![image](https://github.com/user-attachments/assets/03eb91a6-7eeb-4297-8597-e43a5b48c0ce)
+
+- B6: Tối ưu các trường hợp hàm không thể nhận diện được category do lỗi font tiếng Việt
 ![image](https://github.com/user-attachments/assets/aa5ccb11-8426-489c-971b-c38a4d2769ad)
 
